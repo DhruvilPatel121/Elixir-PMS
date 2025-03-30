@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import TeamMenu from '../../pages/Team/TeamMenu';
+import ReportsMenu from '../../pages/Reports/ReportsMenu';
 
 
 const Sidebar = ({ open, menuItems, onMenuClick }) => {
@@ -28,6 +29,8 @@ const Sidebar = ({ open, menuItems, onMenuClick }) => {
       {menuItems.map((item) => (
         item.text === 'Team' ? (
           <TeamMenu key={item.text} open={open} sx={{ display: 'block' }} />
+        ) : item.text === 'Reports' ? (
+          <ReportsMenu key={item.text} open={open} sx={{ display: 'block' }} />
         ) : (
         <ListItem 
           key={item.text}
