@@ -13,6 +13,7 @@ import Timesheets from '../pages/Reports/Timesheets';
 import HelpSupport from '../pages/Help&Support/HelpSupport';
 import Help from '../pages/Help&Support/Help';
 import HelpArticles from '../pages/Help&Support/HelpArticles';
+import Todo from '../pages/Todo/ToDo';
 
 
 export const routes = [
@@ -97,4 +98,9 @@ export const routes = [
       }
     ]
   },
+  {
+    path: '/todo',
+    component: Todo,
+    name: 'ToDo'
+  }
 ];
