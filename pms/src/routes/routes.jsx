@@ -8,6 +8,8 @@ import Announcements from '../pages/Team/Announcements';
 import Events from '../pages/Events/Events';
 import Projects from '../pages/Projects/Projects';
 import Tasks from '../pages/Tasks/Tasks';
+import Reports from '../pages/Reports/Reports';
+import Timesheets from '../pages/Reports/Timesheets';
 
 
 export const routes = [
@@ -62,5 +64,17 @@ export const routes = [
         name: 'Announcements'
       }
     ]
-  }
+  },
+  {
+    path: '/reports',
+    component: Reports,
+    name: 'Reports',
+    children: [
+      {
+        path: 'timesheets',
+        component: Timesheets,
+        name: 'Timesheets'
+      }
+    ]
+  },
 ];
