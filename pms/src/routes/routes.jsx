@@ -6,7 +6,7 @@ import Timeline from '../pages/Team/TimeLine';
 import Leave from '../pages/Team/Leave';
 import Announcements from '../pages/Team/Announcements';
 import Events from '../pages/Events/Events';
-
+import Projects from '../pages/Projects/Projects';
 
 
 export const routes = [
@@ -19,6 +19,11 @@ export const routes = [
     path: '/events',
     component: Events,
     name: 'Events'
+  },
+  {
+    path: '/projects',
+    component: Projects,
+    name: 'Projects'
   },
   {
     path: '/team',
