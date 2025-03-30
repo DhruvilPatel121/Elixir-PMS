@@ -5,6 +5,8 @@ import TimeCards from '../pages/Team/TimeCards';
 import Timeline from '../pages/Team/TimeLine';
 import Leave from '../pages/Team/Leave';
 import Announcements from '../pages/Team/Announcements';
+import Events from '../pages/Events/Events';
+
 
 
 export const routes = [
@@ -13,7 +15,12 @@ export const routes = [
     component: Dashboard,
     name: 'Dashboard'
   },
-    {
+  {
+    path: '/events',
+    component: Events,
+    name: 'Events'
+  },
+  {
     path: '/team',
     component: Team,
     name: 'Team',
