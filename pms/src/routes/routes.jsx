@@ -7,6 +7,7 @@ import Leave from '../pages/Team/Leave';
 import Announcements from '../pages/Team/Announcements';
 import Events from '../pages/Events/Events';
 import Projects from '../pages/Projects/Projects';
+import Tasks from '../pages/Tasks/Tasks';
 
 
 export const routes = [
@@ -24,6 +25,11 @@ export const routes = [
     path: '/projects',
     component: Projects,
     name: 'Projects'
+  },
+  {
+    path: '/tasks',
+    component: Tasks,
+    name: 'Tasks'
   },
   {
     path: '/team',
