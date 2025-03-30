@@ -10,6 +10,9 @@ import Projects from '../pages/Projects/Projects';
 import Tasks from '../pages/Tasks/Tasks';
 import Reports from '../pages/Reports/Reports';
 import Timesheets from '../pages/Reports/Timesheets';
+import HelpSupport from '../pages/Help&Support/HelpSupport';
+import Help from '../pages/Help&Support/Help';
+import HelpArticles from '../pages/Help&Support/HelpArticles';
 
 
 export const routes = [
@@ -74,6 +77,23 @@ export const routes = [
         path: 'timesheets',
         component: Timesheets,
         name: 'Timesheets'
+      }
+    ]
+  },
+  {
+    path: '/helpsupport',
+    component: HelpSupport,
+    name: 'Help & Support',
+    children: [
+      {
+        path: 'help',
+        component: Help,
+        name: 'Help'
+      },
+      {
+        path: 'helparticles',
+        component: HelpArticles,
+        name: 'Help Articles'
       }
     ]
   },
