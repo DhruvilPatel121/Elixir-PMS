@@ -9,6 +9,7 @@ import {
 import { useLocation } from 'react-router-dom';
 import TeamMenu from '../../pages/Team/TeamMenu';
 import ReportsMenu from '../../pages/Reports/ReportsMenu';
+import HelpSupportMenu from '../../pages/Help&Support/HelpSupportMenu';
 
 
 const Sidebar = ({ open, menuItems, onMenuClick }) => {
@@ -31,6 +32,8 @@ const Sidebar = ({ open, menuItems, onMenuClick }) => {
           <TeamMenu key={item.text} open={open} sx={{ display: 'block' }} />
         ) : item.text === 'Reports' ? (
           <ReportsMenu key={item.text} open={open} sx={{ display: 'block' }} />
+        ) : item.text === 'Help & Support' ? (
+          <HelpSupportMenu key={item.text} open={open} sx={{ display: 'block' }} />
         ) : (
         <ListItem 
           key={item.text}
