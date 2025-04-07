@@ -8,6 +8,7 @@ import Announcements from '../pages/Team/Announcements';
 import Events from '../pages/Events/Events';
 import Projects from '../pages/Projects/Projects';
 import Tasks from '../pages/Tasks/Tasks';
+import Notes from '../pages/Notes/Notes';
 import Reports from '../pages/Reports/Reports';
 import Timesheets from '../pages/Reports/Timesheets';
 import HelpSupport from '../pages/Help&Support/HelpSupport';
@@ -36,6 +37,11 @@ export const routes = [
     path: '/tasks',
     component: Tasks,
     name: 'Tasks'
+  },
+  {
+    path: '/notes',
+    component: Notes,
+    name: 'Notes'
   },
   {
     path: '/team',
