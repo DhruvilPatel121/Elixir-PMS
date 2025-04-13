@@ -7,7 +7,14 @@ import Leave from '../pages/Team/Leave';
 import Announcements from '../pages/Team/Announcements';
 import Events from '../pages/Events/Events';
 import Projects from '../pages/Projects/Projects';
-
+import Tasks from '../pages/Tasks/Tasks';
+import Notes from '../pages/Notes/Notes';
+import Reports from '../pages/Reports/Reports';
+import Timesheets from '../pages/Reports/Timesheets';
+import HelpSupport from '../pages/Help&Support/HelpSupport';
+import Help from '../pages/Help&Support/Help';
+import HelpArticles from '../pages/Help&Support/HelpArticles';
+import Todo from '../pages/Todo/ToDo';
 
 export const routes = [
   {
