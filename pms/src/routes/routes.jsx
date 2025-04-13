@@ -26,6 +26,16 @@ export const routes = [
     name: 'Projects'
   },
   {
+    path: '/tasks',
+    component: Tasks,
+    name: 'Tasks'
+  },
+  {
+    path: '/notes',
+    component: Notes,
+    name: 'Notes'
+  },
+  {
     path: '/team',
     component: Team,
     name: 'Team',
@@ -57,4 +67,38 @@ export const routes = [
       }
     ]
   },
+  {
+    path: '/reports',
+    component: Reports,
+    name: 'Reports',
+    children: [
+      {
+        path: 'timesheets',
+        component: Timesheets,
+        name: 'Timesheets'
+      }
+    ]
+  },
+  {
+    path: '/helpsupport',
+    component: HelpSupport,
+    name: 'Help & Support',
+    children: [
+      {
+        path: 'help',
+        component: Help,
+        name: 'Help'
+      },
+      {
+        path: 'helparticles',
+        component: HelpArticles,
+        name: 'Help Articles'
+      }
+    ]
+  },
+  {
+    path: '/todo',
+    component: Todo,
+    name: 'ToDo'
+  }
 ];
