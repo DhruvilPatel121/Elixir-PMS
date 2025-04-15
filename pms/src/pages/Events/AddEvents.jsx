@@ -69,7 +69,7 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Dialog,
   TextField,
@@ -82,8 +82,8 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 
-const AddEvents = ({ open, onClose }) => {
-  const [formData, setFormData] = useState({
+const AddEvents = ({ open, onClose, selectedDate }) => {
+  const defaultFormData = {
     title: '',
     description: '',
     startDate: '',
@@ -92,12 +92,59 @@ const AddEvents = ({ open, onClose }) => {
     endTime: '',
     location: '',
     labels: '',
-    shareWith: 'onlyMe'
-  });
+    shareWith: 'onlyMe',
+    backgroundColor: '#4CAF50'
+  };
+
+  const [formData, setFormData] = useState(defaultFormData);
+
+    useEffect(() => {
+    if (open) {
+      if (selectedDate) {
+        const formattedDate = selectedDate.toISOString().split('T')[0];
+        setFormData({
+          ...defaultFormData,
+          startDate: formattedDate,
+          endDate: formattedDate
+        });
+      } else {
+        setFormData(defaultFormData);
+      }
+    }
+  }, [open, selectedDate]);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+   const handleColorSelect = (color) => {
+    setFormData(prev => ({ ...prev, backgroundColor: color }));
+  };
+
+   const handleSave = () => {
+    if (!formData.title) return;
+
+    const newEvent = {
+      title: formData.title,
+      start: `${formData.startDate}T${formData.startTime || '00:00'}`,
+      end: formData.endDate ? `${formData.endDate}T${formData.endTime || '00:00'}` : null,
+      // start: formData.startDate,
+      // end: formData.endDate,
+      backgroundColor: formData.backgroundColor,
+      description: formData.description,
+      location: formData.location,
+      display: 'block'
+    };
+    
+    onClose(newEvent);
+    setFormData(defaultFormData);
+  };
+
+   const handleClose = () => {
+    onClose(null);
+    setFormData(defaultFormData);
   };
 
   const colors = [
@@ -137,7 +184,7 @@ const AddEvents = ({ open, onClose }) => {
   return (
     <Dialog 
       open={open} 
-      onClose={onClose}
+      onClose={handleClose}
       PaperProps={{
         style: {
           width: '55%',
@@ -153,7 +200,7 @@ const AddEvents = ({ open, onClose }) => {
         marginBottom: '20px'
       }}>
         <span style={{ fontSize: '16px' }}>Add event</span>
-        <IconButton onClick={onClose} size="small">
+        <IconButton onClick={handleClose} size="small">
           <CloseIcon fontSize="small" />
         </IconButton>
       </div>
@@ -293,7 +340,7 @@ const AddEvents = ({ open, onClose }) => {
         </div>
 
         <div style={formRowStyle}>
-          <div style={labelStyle}>Repeat</div>
+          <div style={labelStyle}>Color</div>
           <div style={{ display: 'flex', gap: '8px', flex: 1 }}>
             {colors.map((color, index) => (
               <button
@@ -302,10 +349,11 @@ const AddEvents = ({ open, onClose }) => {
                   width: '24px',
                   height: '24px',
                   backgroundColor: color,
-                  border: 'none',
+                  border: formData.backgroundColor === color ? '2px solid #000' : 'none',
                   borderRadius: '4px',
                   cursor: 'pointer'
                 }}
+                onClick={() => handleColorSelect(color)}
               />
             ))}
           </div>
@@ -333,7 +381,7 @@ const AddEvents = ({ open, onClose }) => {
 
         <div style={{ display: 'flex', gap: '12px' }}>
           <Button 
-            onClick={onClose}
+            onClick={handleClose}
             style={{
               color: '#666',
               textTransform: 'none'
@@ -343,7 +391,7 @@ const AddEvents = ({ open, onClose }) => {
           </Button>
           <Button 
             variant="contained"
-            onClick={() => onClose()}
+            onClick={handleSave}
             style={{
               backgroundColor: '#4285f4',
               textTransform: 'none'

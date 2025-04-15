@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import { 
-  IconButton, 
   Button,
   Menu,
   MenuItem,
 } from '@mui/material';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import AddIcon from '@mui/icons-material/Add';
-import LabelIcon from '@mui/icons-material/Label';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -25,13 +21,19 @@ const Events = () => {
   const [eventStatusAnchorEl, setEventStatusAnchorEl] = useState(null);
   const [eventTypeAnchorEl, setEventTypeAnchorEl] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [events, setEvents] = useState([]);
+
 
   const handleDateClick = (arg) => {
-    setSelectedDate(arg.date);
+    const localDate = new Date(arg.date.getTime() - (arg.date.getTimezoneOffset() * 60000));
+    setSelectedDate(localDate);
     setIsAddEventOpen(true);
   };
 
-  const handleCloseAddEvent = () => {
+  const handleCloseAddEvent = (newEvent) => {
+    if (newEvent) {
+      setEvents(prev => [...prev, newEvent]);
+    }
     setIsAddEventOpen(false);
     setSelectedDate(null);
   };
@@ -146,8 +148,12 @@ const Events = () => {
           weekends={true}
           firstDay={1}
           nowIndicator={true}
+          // handleWindowResize={true}
+          // stickyHeaderDates={true}
           dateClick={handleDateClick}
           expandRows={true}
+          events={events}
+          eventDisplay="block"
         />
       </div>
 
@@ -205,6 +211,12 @@ const Events = () => {
         }
         .events-container .fc .fc-scrollgrid {
           border: none;
+        }
+        .events-container .fc .fc-timegrid-body {
+         width: 100% !important;
+        }
+        .events-container .fc .fc-timegrid-body table {
+         width: 100% !important;
         }
         .events-container .fc .fc-toolbar {
           padding: 1rem 0;
