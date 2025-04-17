@@ -448,7 +448,7 @@ function ToDo() {
       <h3 style={{ margin: 0, fontSize: '16px', fontWeight: '500' }}>
         To do(Private)
         </h3>
-        <button
+        {/* <button
         onClick={handleManageLabelClick}
         style={{
           border: 'none',
@@ -463,7 +463,15 @@ function ToDo() {
         >
           <LocalOfferOutlinedIcon sx={{ fontSize: 15 }} />
           Manage labels
-        </button>
+        </button> */}
+
+        <CustomButton
+        variant="outlined"
+        onClick={handleManageLabelClick}
+      >
+        <LocalOfferOutlinedIcon sx={{ fontSize: 15 }} />
+          Manage labels
+      </CustomButton>
     </div>
     </>
   )
@@ -475,7 +483,7 @@ function ToDo() {
       gap: '8px',
       borderBottom: '1px solid #eee',
      }}>
-      <button
+      {/* <button
         onClick={() => setActiveFilter('todo')}
         style={{
           padding: '6px 12px',
@@ -502,11 +510,32 @@ function ToDo() {
         }}
       >
         Done
-      </button>    
+      </button>     */}
+
+      <CustomButton
+        variant="text"
+        onClick={() => setActiveFilter('todo')}
+        style={{
+          color: activeFilter === 'todo' ? '#1976d2' : '#666',
+          borderBottom: activeFilter === 'todo' ? '2px solid #1976d2' : 'none',
+        }}
+      >
+        To do
+      </CustomButton>
+      <CustomButton
+        variant="text"
+        onClick={() => setActiveFilter('done')}
+        style={{
+          color: activeFilter === 'done' ? '#1976d2' : '#666',
+          borderBottom: activeFilter === 'done' ? '2px solid #1976d2' : 'none',
+        }}
+      >
+        Done
+      </CustomButton>
     </div>
 
     <div style={{ display: 'flex', gap: '8px' }}>
-      <button style={{
+      {/* <button style={{
         padding: '6px 12px',
         border: '1px solid #ddd',
         borderRadius: '4px',
@@ -527,7 +556,18 @@ function ToDo() {
         cursor: 'pointer'
       }}>
         Print
-      </button>
+      </button> */}
+
+      <CustomButton
+        variant="outlined"
+      >
+        Excel
+      </CustomButton>
+      <CustomButton
+        variant="outlined"
+      >
+        Print
+      </CustomButton> 
     </div>
   </>
   );
@@ -563,7 +603,7 @@ function ToDo() {
       }}
       />
 
-      <button
+      {/* <button
        onClick={handleAddTodo}
        style={{
         padding: '8px 13px',
@@ -576,7 +616,14 @@ function ToDo() {
         height: '40px'
        }}>
         Save
-      </button>
+      </button> */}
+
+      <CustomButton
+        variant="contained"
+        onClick={handleAddTodo}
+      >
+        Save
+      </CustomButton>
     </div>
 
       <CustomTable
