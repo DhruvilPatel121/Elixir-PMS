@@ -14,6 +14,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import AddEvent from './AddEvents';
 import ManageLabel from './ManageLabel';
+import CustomButton from '../../components/Button/CustomButton';
 
 const Events = () => {
   const [isAddEventOpen, setIsAddEventOpen] = useState(false);
@@ -96,7 +97,7 @@ const Events = () => {
             Event type
           </Button>
 
-          <Button
+          {/* <Button
             onClick={() => setIsManageLabelOpen(true)}
             style={{
               textTransform: 'none',
@@ -125,7 +126,22 @@ const Events = () => {
             }}
           >
             Add event
-          </Button>
+          </Button> */}
+
+          <CustomButton
+            variant="outlined"
+            onClick={() => setIsManageLabelOpen(true)}
+            startIcon={<LocalOfferOutlinedIcon style={{ fontSize: 18 }} />}
+          >
+            Manage labels
+          </CustomButton>
+          <CustomButton
+            variant="contained"
+            startIcon={<AddIcon style={{ fontSize: 18 }} />}
+            onClick={() => setIsAddEventOpen(true)}
+          >
+            Add event
+          </CustomButton> 
         </div>
       </div>
 

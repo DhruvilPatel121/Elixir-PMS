@@ -7,6 +7,7 @@ import {
   styled
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import CustomButton from '../../components/Button/CustomButton';
 
 const ColorButton = styled('button')({
   width: '24px',
@@ -69,7 +70,7 @@ const ManageLabel = ({ open, onClose }) => {
               }
             }}
           />
-          <Button 
+          {/* <Button 
             variant="contained"
             style={{
               backgroundColor: '#4285f4',
@@ -78,7 +79,13 @@ const ManageLabel = ({ open, onClose }) => {
             }}
           >
             Save
-          </Button>
+          </Button> */}
+
+           <CustomButton
+            variant="contained"
+          >
+            Save
+          </CustomButton>         
         </div>
 
         <div style={{ 
@@ -101,7 +108,7 @@ const ManageLabel = ({ open, onClose }) => {
         borderTop: '1px solid #eee',
         paddingTop: '16px'
       }}>
-        <Button 
+        {/* <Button 
           onClick={onClose}
           style={{
             color: '#666',
@@ -109,7 +116,14 @@ const ManageLabel = ({ open, onClose }) => {
           }}
         >
           Close
-        </Button>
+        </Button> */}
+
+        <CustomButton
+        variant="outlined"
+        onClick={onClose}
+      >
+        Close
+      </CustomButton> 
       </div>
     </Dialog>
   );
