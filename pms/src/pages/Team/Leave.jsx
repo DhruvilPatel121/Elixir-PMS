@@ -289,6 +289,7 @@ import { IconButton } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import CustomButton from '../../components/Button/CustomButton';
 
 const Leave = () => {
   const [leaves, setLeaves] = useState([]);
@@ -330,26 +331,38 @@ const Leave = () => {
            <h2 style={{ margin: 0, fontSize: '18px', fontWeight: '500' }}>My leave</h2>
             <div style={{ display: 'flex', gap: '2px' }}>
                {['Monthly', 'Yearly'].map(option => (
-                  <button
-                     key={option}
+                  // <button
+                  //    key={option}
+                  //   onClick={() => setViewType(option.toLowerCase())}
+                  //     style={{
+                  //       padding: '6px 16px',
+                  //       border: 'none',
+                  //       borderRadius: '4px',
+                  //       background: viewType === option.toLowerCase() ? '#f0f0f0' : 'transparent',
+                  //       color: viewType === option.toLowerCase() ? '#1976d2' : '#666',
+                  //       cursor: 'pointer',
+                  //       fontSize: '14px'
+                  //      }}
+                  //   >
+                  //    {option}
+                  //   </button>
+                  
+                  <CustomButton
+                    key={option}
                     onClick={() => setViewType(option.toLowerCase())}
-                      style={{
-                        padding: '6px 16px',
-                        border: 'none',
-                        borderRadius: '4px',
-                        background: viewType === option.toLowerCase() ? '#f0f0f0' : 'transparent',
-                        color: viewType === option.toLowerCase() ? '#1976d2' : '#666',
-                        cursor: 'pointer',
-                        fontSize: '14px'
-                       }}
-                    >
-                     {option}
-                    </button>                 
+                    variant="text"
+                    style={{
+                      background: viewType === option.toLowerCase() ? '#f0f0f0' : 'transparent',
+                      color: viewType === option.toLowerCase() ? '#1976d2' : '#666',
+                    }}
+                  >
+                    {option}
+                  </CustomButton>
                   ))}
              </div>
         </div>
 
-        <button onClick={handleAddLeave} 
+        {/* <button onClick={handleAddLeave} 
             style={{
               padding: '8px 16px',
               backgroundColor: '#1976d2',
@@ -364,7 +377,14 @@ const Leave = () => {
               gap: '4px',
               transition: 'background-color 0.2s'
             }}>Add Leave
-          </button>
+          </button> */}
+
+          <CustomButton
+        variant="contained"
+        onClick={handleAddLeave}
+      >
+        Add Leave
+      </CustomButton>
         </div>
       </>
     );
@@ -384,7 +404,7 @@ const Leave = () => {
            </div>
 
            <div style={{ display: 'flex', gap: '8px' }}>
-            <button 
+            {/* <button 
             style={{ 
               padding: '6px 12px', 
               border: '1px solid #ddd',
@@ -409,7 +429,18 @@ const Leave = () => {
         }}
       >
         Print
-      </button>
+      </button> */}
+
+      <CustomButton
+        variant="outlined"
+      >
+        Excel
+      </CustomButton>
+      <CustomButton
+        variant="outlined"
+      >
+        Print
+      </CustomButton>
     </div>
     </>
    )

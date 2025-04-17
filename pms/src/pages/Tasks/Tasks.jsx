@@ -538,6 +538,7 @@
 import React, { useState } from 'react';
 import CustomTable from '../../components/Table/CustomTable';
 import { Avatar } from '@mui/material';
+import CustomButton from '../../components/Button/CustomButton';
 
 function Tasks() {
   const [filters, setFilters] = useState({
@@ -807,7 +808,7 @@ function Tasks() {
         </div>
 
         <div style={{ display: 'flex', gap: '8px' }}>
-      <button 
+      {/* <button 
         style={{ 
           padding: '6px 12px', 
           border: '1px solid #ddd',
@@ -832,7 +833,18 @@ function Tasks() {
         }}
       >
         Print
-      </button>
+      </button> */}
+
+      <CustomButton
+        variant="outlined"
+      >
+        Excel
+      </CustomButton>
+      <CustomButton
+        variant="outlined"
+      >
+        Print
+      </CustomButton>
     </div>
     </>
   );

@@ -339,6 +339,7 @@
 
 import React, { useState } from 'react';
 import CustomTable from '../../components/Table/CustomTable';
+import CustomButton from '../../components/Button/CustomButton';
 
 function Timesheets() {
   const [activeTab, setActiveTab] = useState('Details');
@@ -363,22 +364,35 @@ function Timesheets() {
       <div style={{ display: 'flex', gap: '2px' }}>
         <h2 style={{ fontSize: '18px', fontWeight: '500' }}>Timesheets</h2>
         {['Details', 'Summary', 'Chart'].map(tab => (
-          <button
+          // <button
+          //   key={tab}
+          //   onClick={() => setActiveTab(tab)}
+          //   style={{
+          //     padding: '12px 24px',
+          //     border: 'none',
+          //     borderBottom: activeTab === tab ? '2px solid #1976d2' : 'none',
+          //     background: 'transparent',
+          //     color: activeTab === tab ? '#1976d2' : '#666',
+          //     cursor: 'pointer',
+          //     fontSize: '14px',
+          //     fontWeight: activeTab === tab ? '500' : '400'
+          //   }}
+          // >
+          //   {tab}
+          // </button>
+          
+          <CustomButton
             key={tab}
+            variant="text"
             onClick={() => setActiveTab(tab)}
             style={{
-              padding: '12px 24px',
-              border: 'none',
               borderBottom: activeTab === tab ? '2px solid #1976d2' : 'none',
-              background: 'transparent',
               color: activeTab === tab ? '#1976d2' : '#666',
-              cursor: 'pointer',
-              fontSize: '14px',
               fontWeight: activeTab === tab ? '500' : '400'
             }}
           >
             {tab}
-          </button>        
+          </CustomButton> 
         ))}
       </div>
     </div>
@@ -443,7 +457,7 @@ function Timesheets() {
     </div>
 
     <div style={{ display: 'flex', gap: '8px' }}>
-      <button style={{
+      {/* <button style={{
         padding: '6px 12px',
         border: '1px solid #ddd',
         borderRadius: '4px',
@@ -465,7 +479,18 @@ function Timesheets() {
         cursor: 'pointer'
       }}>
         Print
-      </button>      
+      </button>       */}
+
+      <CustomButton
+        variant="outlined"
+      >
+        Excel
+      </CustomButton>
+      <CustomButton
+        variant="outlined"
+      >
+        Print
+      </CustomButton>
     </div>
     </>
   );

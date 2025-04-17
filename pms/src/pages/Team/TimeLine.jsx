@@ -62,6 +62,7 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ReplyIcon from '@mui/icons-material/Reply';
 import EmailIcon from '@mui/icons-material/Email';
+import CustomButton from '../../components/Button/CustomButton';
 
 const Timeline = () => {
   const [newPost, setNewPost] = useState('');
@@ -270,22 +271,38 @@ const teamMembers = [
                   onChange={handleFileChange}
                 />
                 <label htmlFor="file-upload">
-                  <Button
+                  {/* <Button
                     component="span"
                     startIcon={<AttachFileIcon />}
                     sx={{ color: '#666' }}
                   >
                     Upload File
-                  </Button>
+                  </Button> */}
+
+                  <CustomButton
+                  variant="text"
+                  component="span"
+                  startIcon={<AttachFileIcon />}
+                  sx={{ color: '#666' }}
+                  >
+                    Upload File
+                  </CustomButton>
                 </label>
-                <Button
+                {/* <Button
                   variant="contained"
                   color="primary"
                   onClick={handlePostSubmit}
                   sx={{ borderRadius: '4px' }}
                 >
                   Post
-                </Button>
+                </Button> */}
+
+                <CustomButton
+                  variant="contained"
+                  onClick={handlePostSubmit}
+                >
+                  Post
+                </CustomButton> 
               </div>
             </div>
           </div>
@@ -375,7 +392,7 @@ const teamMembers = [
                     borderTop: '1px solid #f0f0f0',
                     paddingTop: '12px'
                   }}>
-                    <Button
+                    {/* <Button
                       size="small"
                       startIcon={<ReplyIcon sx={{ fontSize: 16 }} />}
                       sx={{ 
@@ -401,7 +418,38 @@ const teamMembers = [
                       }}
                     >
                       View 1 Reply
-                    </Button>
+                    </Button> */}
+
+                    <CustomButton
+                    variant="text"
+                    size="small"
+                    startIcon={<ReplyIcon sx={{ fontSize: 16 }} />}
+                    onClick={() => setShowReplyInput(post.id)}
+                    sx={{ 
+                        color: '#666',
+                        textTransform: 'none',
+                        fontSize: '13px',
+                        padding: '4px 8px',
+                        minWidth: 'auto'
+                      }}
+                    >
+                      Reply
+                    </CustomButton>
+                    <CustomButton
+                    variant="text"
+                    size="small"
+                    startIcon={<VisibilityIcon sx={{ fontSize: 16 }} />}
+                    onClick={() => setShowReplyInput(post.id)}
+                    sx={{ 
+                        color: '#666',
+                        textTransform: 'none',
+                        fontSize: '13px',
+                        padding: '4px 8px',
+                        minWidth: 'auto'
+                      }}
+                    >
+                       View 1 Reply
+                    </CustomButton>
                   </div>
                 </div>
               </div>

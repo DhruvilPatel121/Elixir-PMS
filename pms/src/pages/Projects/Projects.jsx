@@ -285,7 +285,7 @@
 
 import React, { useState } from 'react';
 import CustomTable from '../../components/Table/CustomTable';
-
+import CustomButton from '../../components/Button/CustomButton';
 
 function Projects() {
   const [projects, setProjects] = useState([
@@ -464,7 +464,7 @@ function Projects() {
     </div>
 
     <div style={{ display: 'flex', gap: '8px' }}>
-      <button 
+      {/* <button 
         style={{ 
           padding: '6px 12px', 
           border: '1px solid #ddd',
@@ -489,7 +489,18 @@ function Projects() {
         }}
       >
         Print
-      </button>
+      </button> */}
+
+      <CustomButton
+        variant="outlined"
+      >
+        Excel
+      </CustomButton>
+      <CustomButton
+        variant="outlined"
+      >
+        Print
+      </CustomButton>
     </div>
     </>
   );
