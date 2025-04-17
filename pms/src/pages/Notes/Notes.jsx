@@ -288,6 +288,7 @@ import { IconButton } from '@mui/material';
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import CustomTable from '../../components/Table/CustomTable';
 import ManageLabel from "../Events/ManageLabel";
+import CustomButton from "../../components/Button/CustomButton"
 
 function Notes() {
   const [notes, setNotes] = useState([]);
@@ -311,7 +312,7 @@ function Notes() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
         <h2 style={{ margin: 0, fontSize: '18px', fontWeight: '500' }}>Notes (Private)</h2>
         <div style={{ display: 'flex', gap: '10px' }}>
-          <button
+          {/* <button
           onClick={handleManageLabelOpen} 
           style={{ 
             padding: '6px 12px', 
@@ -337,7 +338,20 @@ function Notes() {
             fontSize: '14px'
           }}>
             Add note
-          </button>
+          </button> */}
+
+          <CustomButton
+          variant="outlined"
+          onClick={handleManageLabelOpen}
+        >
+          <LocalOfferOutlinedIcon sx={{fontSize: 20}}/>
+          Manage labels
+        </CustomButton>
+        <CustomButton
+          variant="outlined"
+        >
+          Add note
+        </CustomButton>
         </div>
       </div>
    )

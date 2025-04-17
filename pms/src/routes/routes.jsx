@@ -15,8 +15,20 @@ import HelpSupport from '../pages/Help&Support/HelpSupport';
 import Help from '../pages/Help&Support/Help';
 import HelpArticles from '../pages/Help&Support/HelpArticles';
 import Todo from '../pages/Todo/ToDo';
+import Login from '../pages/auth/Login';
+import ForgotPassword from '../pages/auth/ForgotPassword';
 
 export const routes = [
+  {
+    path: '/',
+    component: Login,
+    name: 'Login'
+  },
+  {
+    path: '/forgotpassword',
+    component: ForgotPassword,
+    name: 'Forgot Password'
+  },
   {
     path: '/dashboard',
     component: Dashboard,
