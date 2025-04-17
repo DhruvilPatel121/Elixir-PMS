@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Toolbar, 
   IconButton, 
   Typography,
   Box,
   Avatar,
-  Tooltip
+  Tooltip,
+  TextField, 
+  Menu,
+  MenuItem
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import RefreshIcon from '@mui/icons-material/Refresh';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import GridViewIcon from '@mui/icons-material/GridView';
 import DesktopWindowsIcon from '@mui/icons-material/DesktopWindows';
 import SearchIcon from '@mui/icons-material/Search';
@@ -17,8 +20,38 @@ import LanguageIcon from '@mui/icons-material/Language';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({ handleDrawerToggle }) => {
+
+  const navigate = useNavigate();
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    navigate('/');
+    handleClose();
+  };
+
+  const handleTaskAltIcon = () => {
+    navigate('/todo');
+  }
+
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value);
+  }
+
   return (
     <Toolbar 
       sx={{ 
@@ -38,9 +71,11 @@ const Navbar = ({ handleDrawerToggle }) => {
         >
           <MenuIcon />
         </IconButton>
-        <IconButton size="small" sx={{ color: 'text.secondary' }}>
-          <RefreshIcon />
+        <Tooltip title="ToDo">
+        <IconButton onClick={handleTaskAltIcon} size="small" sx={{ color: 'text.secondary' }}>
+          <TaskAltIcon />
         </IconButton>
+        </Tooltip>
         <IconButton size="small" sx={{ color: 'text.secondary' }}>
           <GridViewIcon />
         </IconButton>
@@ -58,12 +93,31 @@ const Navbar = ({ handleDrawerToggle }) => {
           size: 'small'
         }
       }}>
+        {searchOpen ? (
+          <TextField
+            size="small"
+            value={searchValue}
+            onChange={handleSearch}
+            placeholder="Search..."
+            autoFocus
+            onBlur={() => !searchValue && setSearchOpen(false)}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                height: '32px',
+                fontSize: '14px',
+                width: '200px',
+                backgroundColor: '#fff'
+              }
+            }}
+          />
+        ) : (
         <Tooltip title="Search">
-          <IconButton>
+          <IconButton
+          onClick={() => setSearchOpen(true)}>
             <SearchIcon />
           </IconButton>
         </Tooltip>
-        
+        )}
         <Tooltip title="Add New">
           <IconButton>
             <AddCircleOutlineIcon />
@@ -94,7 +148,9 @@ const Navbar = ({ handleDrawerToggle }) => {
           </IconButton>
         </Tooltip>
 
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, ml: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, ml: 1 }}
+        onClick={handleClick}
+        >
           <Avatar 
             sx={{ 
               width: 32, 
@@ -114,6 +170,22 @@ const Navbar = ({ handleDrawerToggle }) => {
             Dhruvil Bhuva
           </Typography>
         </Box>
+        <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        onClick={handleClose}
+        PaperProps={{
+          elevation: 0,
+          sx: {
+            overflow: 'visible',
+            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+            mt: 1.5,
+          },
+        }}
+      >
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      </Menu>
       </Box>
     </Toolbar>
   );
