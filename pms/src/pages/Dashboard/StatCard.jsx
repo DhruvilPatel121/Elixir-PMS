@@ -12,7 +12,9 @@ const StatCard = ({ icon, type, title, subtitle, count, bgColor }) => {
         gap: 2,
         borderRadius: 2,
         height: '100%',
-        minHeight: 100,
+        minHeight: 120,
+        width: '100%',
+        minWidth: '270px',
         transition: 'transform 0.2s',
         '&:hover': {
           transform: 'translateY(-4px)',
@@ -72,4 +74,4 @@ const StatCard = ({ icon, type, title, subtitle, count, bgColor }) => {
   );
 };
 
-export default StatCard; 
+export default StatCard
