@@ -81,6 +81,7 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
+import CustomButton from '../../components/Button/CustomButton';
 
 const AddEvents = ({ open, onClose, selectedDate }) => {
   const defaultFormData = {
@@ -368,7 +369,7 @@ const AddEvents = ({ open, onClose, selectedDate }) => {
         marginTop: '20px',
         paddingTop: '16px'
       }}>
-        <Button
+        {/* <Button
           startIcon={<AttachFileIcon />}
           style={{
             color: '#666',
@@ -377,10 +378,17 @@ const AddEvents = ({ open, onClose, selectedDate }) => {
           }}
         >
           Upload file
-        </Button>
+        </Button> */}
+
+        <CustomButton
+        startIcon={<AttachFileIcon />}
+         variant="text"
+        >
+          Upload file
+        </CustomButton>
 
         <div style={{ display: 'flex', gap: '12px' }}>
-          <Button 
+          {/* <Button 
             onClick={handleClose}
             style={{
               color: '#666',
@@ -398,7 +406,20 @@ const AddEvents = ({ open, onClose, selectedDate }) => {
             }}
           >
             Save
-          </Button>
+          </Button> */}
+          <CustomButton
+            variant="outlined"
+            onClick={handleClose}
+          >
+            Close
+          </CustomButton>
+          <CustomButton
+            variant="contained"
+            onClick={handleSave}
+          >
+            Save
+          </CustomButton> 
+
         </div>
       </div>
     </Dialog>
