@@ -349,6 +349,7 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import GridViewIcon from '@mui/icons-material/GridView';
 import CustomTable from '../../components/Table/CustomTable';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import CustomButton from '../../components/Button/CustomButton';
 
 const TeamMembers = () => {
   const [members, setMembers] = useState([
@@ -473,10 +474,28 @@ const TeamMembers = () => {
         <>
         <div style={{ display: 'flex', gap: '2px' }}>
              {['Active members', 'Inactive members'].map(option => (
-              <button
-                key={option}
-                onClick={() => setViewType(option.toLowerCase())}
-                style={{
+              // <button
+              //   key={option}
+              //   onClick={() => setViewType(option.toLowerCase())}
+              //   style={{
+              //     padding: '6px 16px',
+              //     border: 'none',
+              //     borderRadius: '4px',
+              //     background: viewType === option.toLowerCase() ? '#f0f0f0' : 'transparent',
+              //     color: viewType === option.toLowerCase() ? '#1976d2' : '#666',
+              //     cursor: 'pointer',
+              //     fontSize: '14px',
+              //     fontWeight: viewType === option.toLowerCase() ? '500' : '400',
+              //   }}
+              // >
+              //   {option}
+              // </button>
+
+              <CustomButton
+              variant="text"
+              key={option}
+              onClick={() => setViewType(option.toLowerCase())}
+              style={{
                   padding: '6px 16px',
                   border: 'none',
                   borderRadius: '4px',
@@ -488,12 +507,12 @@ const TeamMembers = () => {
                 }}
               >
                 {option}
-              </button>
+              </CustomButton>
             ))}
           </div>
           
         <div style={{ display: 'flex', gap: '8px' }}>
-        <button 
+        {/* <button 
         style={{ 
           padding: '6px 12px', 
           border: '1px solid #ddd',
@@ -518,7 +537,18 @@ const TeamMembers = () => {
         }}
       >
         Print
-      </button>
+      </button> */}
+
+      <CustomButton
+        variant="outlined"
+      >
+        Excel
+      </CustomButton>
+      <CustomButton
+        variant="outlined"
+      >
+        Print
+      </CustomButton>
     </div>
     </>
     )
