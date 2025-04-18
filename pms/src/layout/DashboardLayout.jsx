@@ -1,5 +1,5 @@
-import * as React from "react";
-import { styled, ThemeProvider, createTheme } from "@mui/material/styles";
+import React, { useState } from "react";
+import { styled } from "@mui/material/styles";
 import {
   BrowserRouter as Router,
   Routes,
@@ -22,8 +22,6 @@ import {
   CheckCircle,
   PlaylistAddCheck,
 } from "@mui/icons-material";
-
-// Import components
 import Sidebar from "../components/Sidebar/Sidebar.jsx";
 import Navbar from "../components/Header/Navbar.jsx";
 import { routes } from "../routes/routes.jsx";
@@ -54,9 +52,8 @@ const Drawer = styled(MuiDrawer)(({ open }) => ({
   },
 }));
 
-const StyledAppBar = styled(MuiAppBar)(({ theme, open }) => ({
+const StyledAppBar = styled(MuiAppBar)(({ open }) => ({
   position: "fixed",
-  zIndex: theme.zIndex.drawer - 1,
   backgroundColor: "#fff",
   color: "#333",
   boxShadow: "none",
@@ -80,8 +77,9 @@ const MENU_ITEMS = [
   { text: "ToDo", icon: <PlaylistAddCheck />, path: "/todo" },
 ];
 
-export default function DashboardLayout() {
-  const [open, setOpen] = React.useState(false);
+function DashboardLayout() {
+
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
   const toggleDrawer = () => {
@@ -93,7 +91,6 @@ export default function DashboardLayout() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
       <Box
         sx={{
           display: "flex",
@@ -154,23 +151,13 @@ export default function DashboardLayout() {
               ))}
                 </Route>
                 ))}
-                <Route
-                  path="/"
-                  element={<Navigate to="/dashboard" replace />}
-                />
+                
               </Routes>
             </Container>
           </Box>
         </Box>
       </Box>
-    </ThemeProvider>
-  );
+  )
 }
 
-// Move theme creation here
-const theme = createTheme({
-  palette: {
-    primary: { main: "#1976d2" },
-    secondary: { main: "#dc004e" },
-  },
-});
+export default DashboardLayout
